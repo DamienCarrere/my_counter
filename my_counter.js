@@ -1,29 +1,36 @@
+let divContainer = document.createElement("div");
+
+document.body.appendChild(divContainer);
+
 /* ----------------------------------------------------- */
 
 let myCounterTitle = document.createElement("h1");
 myCounterTitle.textContent = "My Counter";
 
-document.body.appendChild(myCounterTitle);
+divContainer.appendChild(myCounterTitle);
 
-/* ----------------------------------------------------- */
+/* -------------------------- Titre --------------------------- */
 
 let myCounter = document.createElement("h2");
 myCounter.textContent = "0";
 
-document.body.appendChild(myCounter);
+divContainer.appendChild(myCounter);
 
-/* ----------------------------------------------------- */
+/* -------------------------- Incrément --------------------------- */
 
 let incrementButton = document.createElement("button");
 incrementButton.textContent = "Incrémenter +";
 incrementButton.addEventListener("click", function () {
 	let currentCount = parseInt(myCounter.textContent);
-	myCounter.textContent = currentCount + 1;
+	let limit = parseInt(limitField.value) || Infinity;
+	if (currentCount < limit) {
+		myCounter.textContent = currentCount + 1;
+	}
 });
 
-document.body.appendChild(incrementButton);
+divContainer.appendChild(incrementButton);
 
-/* ----------------------------------------------------- */
+/* --------------------------- Décrément -------------------------- */
 
 let decrementButton = document.createElement("button");
 decrementButton.textContent = "Décrémenter -";
@@ -34,16 +41,19 @@ decrementButton.addEventListener("click", function () {
 	}
 });
 
-document.body.appendChild(decrementButton);
+divContainer.appendChild(decrementButton);
 
-/* ----------------------------------------------------- */
+/* --------------------------- Reset -------------------------- */
 
 let resetButton = document.createElement("button");
 resetButton.textContent = "Reset";
 resetButton.addEventListener("click", function () {
-	let currentCount = parseInt(myCounter.textContent);
-	myCounter.textContent = currentCount - currentCount;
+	myCounter.textContent = 0;
 });
-document.body.appendChild(resetButton);
+divContainer.appendChild(resetButton);
 
-/* ----------------------------------------------------- */
+/* --------------------------- Limite -------------------------- */
+
+let limitField = document.createElement("input");
+limitField.type = "number";
+divContainer.appendChild(limitField);
