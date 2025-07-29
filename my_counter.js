@@ -4,24 +4,21 @@ document.body.appendChild(divContainer);
 
 /* ----------------------------------------------------- */
 
-let myCounterTitle = document.createElement("h1");
-myCounterTitle.textContent = "My Counter";
-
-divContainer.appendChild(myCounterTitle);
+let myCounterTitle = createAndAddElement("h1", "My Counter", divContainer);
 
 /* -------------------------- Titre --------------------------- */
 
-let myCounter = document.createElement("h2");
-myCounter.textContent = "0";
-
-divContainer.appendChild(myCounter);
+let myCounter = createAndAddElement("h2", "0", divContainer);
 
 /* -------------------------- Incrément --------------------------- */
 
-let incrementButton = document.createElement("button");
+let incrementButton = createAndAddElement(
+	"button",
+	"Incrémenter +",
+	divContainer
+);
 incrementButton.classList.add("buttonClass");
 incrementButton.id = "increment";
-incrementButton.textContent = "Incrémenter +";
 incrementButton.addEventListener("click", function () {
 	let currentCount = parseInt(myCounter.textContent);
 	let limit = parseInt(limitField.value) || Infinity;
@@ -30,14 +27,15 @@ incrementButton.addEventListener("click", function () {
 	}
 });
 
-divContainer.appendChild(incrementButton);
-
 /* --------------------------- Décrément -------------------------- */
 
-let decrementButton = document.createElement("button");
+let decrementButton = createAndAddElement(
+	"button",
+	"Décrémenter -",
+	divContainer
+);
 decrementButton.classList.add("buttonClass");
 decrementButton.id = "decrement";
-decrementButton.textContent = "Décrémenter -";
 decrementButton.addEventListener("click", function () {
 	if (myCounter.textContent > 0) {
 		let currentCount = parseInt(myCounter.textContent);
@@ -45,26 +43,22 @@ decrementButton.addEventListener("click", function () {
 	}
 });
 
-divContainer.appendChild(decrementButton);
-
 /* --------------------------- Reset -------------------------- */
 
-let resetButton = document.createElement("button");
+let resetButton = createAndAddElement("button", "Reset", divContainer);
 resetButton.classList.add("buttonClass");
 resetButton.id = "reset";
-resetButton.textContent = "Reset";
 resetButton.addEventListener("click", function () {
 	myCounter.textContent = 0;
 	limitField.value = "";
 	limitText.textContent = "Limite actuelle : ∞";
 });
-divContainer.appendChild(resetButton);
 
 /* --------------------------- Limite -------------------------- */
 
-let limitText = document.createElement("p");
-let limitField = document.createElement("input");
-limitText.textContent = "Limite actuelle : ∞";
+let limitText = createAndAddElement("p", "Limite actuelle : ∞", divContainer);
+let limitField = createAndAddElement("input", "", divContainer);
+document.createElement("input");
 limitField.type = "number";
 limitField.placeholder = "Entrez une valeur Max";
 limitField.addEventListener("input", function () {
@@ -76,5 +70,17 @@ limitField.addEventListener("input", function () {
 		myCounter.textContent = limitField.value;
 	}
 });
-divContainer.appendChild(limitField);
-divContainer.appendChild(limitText);
+
+// créer fonction createAndAddElement (type element qu'on veut créer, parent, contenu, elle prends ou pas un élément de référence (par exemple créer un h1 ou élément div avant le parent))
+
+function createAndAddElement(type, content, parent, refParent) {
+	let elementType = document.createElement(type);
+	elementType.textContent = content;
+
+	if (refParent) {
+		parent.insertBefore(elementType, refParent);
+	} else {
+		parent.appendChild(elementType);
+	}
+	return elementType;
+}
