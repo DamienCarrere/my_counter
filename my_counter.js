@@ -49,11 +49,26 @@ let resetButton = document.createElement("button");
 resetButton.textContent = "Reset";
 resetButton.addEventListener("click", function () {
 	myCounter.textContent = 0;
+	limitField.value = "";
+	limitText.textContent = "∞";
 });
 divContainer.appendChild(resetButton);
 
 /* --------------------------- Limite -------------------------- */
 
+let limitText = document.createElement("p");
 let limitField = document.createElement("input");
+limitText.textContent = "∞";
 limitField.type = "number";
+limitField.placeholder = "Entrez une valeur Max";
+limitField.addEventListener("input", function () {
+	limitText.textContent = limitField.value;
+	if (limitField.value == "") {
+		limitText.textContent = "∞";
+		myCounter.textContent = 0;
+	} else if (parseInt(myCounter.textContent) > limitField.value) {
+		myCounter.textContent = limitField.value;
+	}
+});
 divContainer.appendChild(limitField);
+divContainer.appendChild(limitText);
