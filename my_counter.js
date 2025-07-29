@@ -19,6 +19,8 @@ divContainer.appendChild(myCounter);
 /* -------------------------- Incrément --------------------------- */
 
 let incrementButton = document.createElement("button");
+incrementButton.classList.add("buttonClass");
+incrementButton.id = "increment";
 incrementButton.textContent = "Incrémenter +";
 incrementButton.addEventListener("click", function () {
 	let currentCount = parseInt(myCounter.textContent);
@@ -33,6 +35,8 @@ divContainer.appendChild(incrementButton);
 /* --------------------------- Décrément -------------------------- */
 
 let decrementButton = document.createElement("button");
+decrementButton.classList.add("buttonClass");
+decrementButton.id = "decrement";
 decrementButton.textContent = "Décrémenter -";
 decrementButton.addEventListener("click", function () {
 	if (myCounter.textContent > 0) {
@@ -46,11 +50,13 @@ divContainer.appendChild(decrementButton);
 /* --------------------------- Reset -------------------------- */
 
 let resetButton = document.createElement("button");
+resetButton.classList.add("buttonClass");
+resetButton.id = "reset";
 resetButton.textContent = "Reset";
 resetButton.addEventListener("click", function () {
 	myCounter.textContent = 0;
 	limitField.value = "";
-	limitText.textContent = "∞";
+	limitText.textContent = "Limite actuelle : ∞";
 });
 divContainer.appendChild(resetButton);
 
@@ -58,13 +64,13 @@ divContainer.appendChild(resetButton);
 
 let limitText = document.createElement("p");
 let limitField = document.createElement("input");
-limitText.textContent = "∞";
+limitText.textContent = "Limite actuelle : ∞";
 limitField.type = "number";
 limitField.placeholder = "Entrez une valeur Max";
 limitField.addEventListener("input", function () {
-	limitText.textContent = limitField.value;
+	limitText.textContent = "Limite actuelle : " + limitField.value;
 	if (limitField.value == "") {
-		limitText.textContent = "∞";
+		limitText.textContent = "Limite actuelle : ∞";
 		myCounter.textContent = 0;
 	} else if (parseInt(myCounter.textContent) > limitField.value) {
 		myCounter.textContent = limitField.value;

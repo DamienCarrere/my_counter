@@ -1,0 +1,89 @@
+body {
+    margin: 0;
+    padding: 0;
+
+    background: linear-gradient(135deg, #4e0097, #984fc9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+div {
+    text-align: center;
+    background: white;
+    padding: 30px 50px;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+h2 {
+    font-size: 3rem;
+    margin: 20px 0;
+    color: #444;
+}
+
+.buttonClass {
+    margin: 8px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.buttonClass:hover {
+    transform: scale(1.05);
+}
+
+.buttonClass:active {
+    transform: scale(0.95);
+}
+
+#increment {
+    background-color: rgb(26, 228, 26);
+}
+
+#decrement {
+    background-color: rgb(228, 26, 26);
+}
+
+#reset {
+    background-color: rgb(26, 90, 228);
+}
+
+input {
+    padding: 10px;
+    margin-top: 15px;
+    border: 2px solid #66a6ff;
+    border-radius: 8px;
+    width: 80%;
+    text-align: center;
+    font-size: 1rem;
+    outline: none;
+    transition: border 0.3s ease;
+}
+
+input:hover {
+    border: 2px solid #008822;
+}
+
+input:focus {
+    border: 2px solid #12ee49;
+}
+
+p {
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: #555;
+}
