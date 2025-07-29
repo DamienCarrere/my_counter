@@ -28,8 +28,22 @@ document.body.appendChild(incrementButton);
 let decrementButton = document.createElement("button");
 decrementButton.textContent = "Décrémenter -";
 decrementButton.addEventListener("click", function () {
-	let currentCount = parseInt(myCounter.textContent);
-	myCounter.textContent = currentCount - 1;
+	if (myCounter.textContent > 0) {
+		let currentCount = parseInt(myCounter.textContent);
+		myCounter.textContent = currentCount - 1;
+	}
 });
 
 document.body.appendChild(decrementButton);
+
+/* ----------------------------------------------------- */
+
+let resetButton = document.createElement("button");
+resetButton.textContent = "Reset";
+resetButton.addEventListener("click", function () {
+	let currentCount = parseInt(myCounter.textContent);
+	myCounter.textContent = currentCount - currentCount;
+});
+document.body.appendChild(resetButton);
+
+/* ----------------------------------------------------- */
